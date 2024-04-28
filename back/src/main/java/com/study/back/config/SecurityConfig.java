@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true); // 쿠키 사용 허용
+        config.setAllowCredentials(true);
         config.addAllowedOrigin("http://localhost:3000");// 리액트 서버
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
