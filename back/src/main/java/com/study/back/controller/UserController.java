@@ -43,7 +43,7 @@ public class UserController {
     }
 
     @GetMapping("/loginOk")
-    public ResponseEntity<Map<String,String>> loginOk() {
+    public ResponseEntity<Map<String, String>> loginOk() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         String authorities = authentication.getAuthorities().toString();
@@ -56,5 +56,11 @@ public class UserController {
         userInfo.put("authorities", authorities);
 
         return ResponseEntity.ok(userInfo);
+    }
+
+    @GetMapping("/logoutOk")
+    public ResponseEntity<Void> logoutOk() {
+        System.out.println("로그아웃 성공");
+        return ResponseEntity.ok().build();
     }
 }

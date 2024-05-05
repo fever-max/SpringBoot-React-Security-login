@@ -36,6 +36,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .loginProcessingUrl("/loginProc")
                 .defaultSuccessUrl("/loginOk")
+                .permitAll()
+                .and()
+                .logout() // 로그아웃 설정
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/logoutOk")
+                .deleteCookies("JSESSIONID")
                 .permitAll();
 
         http.addFilterBefore(corsFilter(), UsernamePasswordAuthenticationFilter.class);

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function Login() {
+  const navigate = useNavigate();
+
   const [user, setUser] = useState({
     username: '',
     password: '',
@@ -30,6 +32,7 @@ function Login() {
         alert('로그인 성공! ');
         console.log('유저 이름: ' + response.data.username);
         console.log('권한: ' + response.data.authorities);
+        navigate('/userInfo', { state: { userData: response.data } });
       }
     } catch (error) {
       console.log('로그인 에러: ', error);
