@@ -6,7 +6,7 @@ function Login() {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
-    username: '',
+    email: '',
     password: '',
   });
 
@@ -19,7 +19,7 @@ function Login() {
     e.preventDefault();
     try {
       const formData = new FormData();
-      formData.append('username', user.username);
+      formData.append('email', user.email);
       formData.append('password', user.password);
 
       const response = await axios({
@@ -30,7 +30,7 @@ function Login() {
       });
       if (response) {
         alert('로그인 성공! ');
-        console.log('유저 이름: ' + response.data.username);
+        console.log('유저 이메일: ' + response.data.email);
         console.log('권한: ' + response.data.authorities);
         navigate('/userInfo', { state: { userData: response.data } });
       }
@@ -43,7 +43,7 @@ function Login() {
     <div>
       <h3>로그인</h3>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="username" placeholder="이름" value={user.username} onChange={handleChange} />
+        <input type="text" name="email" placeholder="이름" value={user.username} onChange={handleChange} />
         <input type="password" name="password" placeholder="비밀번호" value={user.password} onChange={handleChange} />
         <button type="submit">로그인</button>
       </form>

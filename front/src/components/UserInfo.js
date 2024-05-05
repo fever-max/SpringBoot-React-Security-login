@@ -4,7 +4,7 @@ import axios from 'axios';
 
 function UserInfo() {
   const location = useLocation();
-  const { username, authorities } = location.state.userData;
+  const { email, authorities } = location.state.userData;
 
   const handleLogout = async () => {
     try {
@@ -19,7 +19,7 @@ function UserInfo() {
   return (
     <div>
       <h1>사용자 정보</h1>
-      <p>이름: {username}</p>
+      <p>이메일: {email}</p>
       <p>권한: {authorities}</p>
       <button onClick={handleLogout}>로그아웃</button>
     </div>

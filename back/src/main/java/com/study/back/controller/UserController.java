@@ -45,14 +45,14 @@ public class UserController {
     @GetMapping("/loginOk")
     public ResponseEntity<Map<String, String>> loginOk() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
+        String email = authentication.getName();
         String authorities = authentication.getAuthorities().toString();
 
-        System.out.println("로그인한 유저:" + username);
+        System.out.println("로그인한 유저 이메일:" + email);
         System.out.println("유저 권한:" + authentication.getAuthorities());
 
         Map<String, String> userInfo = new HashMap<>();
-        userInfo.put("username", username);
+        userInfo.put("email", email);
         userInfo.put("authorities", authorities);
 
         return ResponseEntity.ok(userInfo);

@@ -32,9 +32,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().permitAll()
                 .and()
-                .formLogin()
+                .formLogin() // 로그인 설정
                 .loginPage("/login")
                 .loginProcessingUrl("/loginProc")
+                .usernameParameter("email")
                 .defaultSuccessUrl("/loginOk")
                 .permitAll()
                 .and()
