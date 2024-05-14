@@ -43,7 +43,7 @@ function Login() {
     <div>
       <h3>로그인</h3>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="email" placeholder="이름" value={user.username} onChange={handleChange} />
+        <input type="text" name="email" placeholder="이메일" value={user.email} onChange={handleChange} />
         <input type="password" name="password" placeholder="비밀번호" value={user.password} onChange={handleChange} />
         <button type="submit">로그인</button>
       </form>

@@ -2,6 +2,7 @@ package com.study.back.model;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,12 +26,11 @@ public class User {
     private int no;
     private String username;
     private String password;
-    private String userEmail;
-    private String role; // ROLE_USER, ROLE_ADMIN
 
-    // OAuth2 구분
-    private String provider;
-    private String providerId;
+    @Column(unique = true)
+    private String userEmail;
+
+    private String role; // ROLE_USER, ROLE_ADMIN
 
     @CreationTimestamp
     private Timestamp createDate;

@@ -16,12 +16,17 @@ function UserInfo() {
     }
   };
 
+  const goToAdminPage = () => {
+    window.location.href = '/admin';
+  };
+
   return (
     <div>
       <h1>사용자 정보</h1>
       <p>이메일: {email}</p>
       <p>권한: {authorities}</p>
       <button onClick={handleLogout}>로그아웃</button>
+      <button onClick={goToAdminPage}>어드민 페이지</button>
     </div>
   );
 }

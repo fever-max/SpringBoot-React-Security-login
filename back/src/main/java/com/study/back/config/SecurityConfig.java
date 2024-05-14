@@ -28,22 +28,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/user/**").authenticated()
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/admin/**").hasRole("ADMIN") // /admin/** 접근은 ADMIN 권한을 가진 사용자만 가능
+                .antMatchers("/user/**").authenticated() // /user/** 접근은 인증된 사용자만 가능
                 .anyRequest().permitAll()
                 .and()
                 .formLogin() // 로그인 설정
                 .loginPage("/login")
-                .loginProcessingUrl("/loginProc")
-                .usernameParameter("email")
+                .loginProcessingUrl("/loginProc") // 실제 로그인 처리 엔드 포인트
+                .usernameParameter("email") // form에서 email 사용
                 .defaultSuccessUrl("/loginOk")
-                .permitAll()
                 .and()
                 .logout() // 로그아웃 설정
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/logoutOk")
-                .deleteCookies("JSESSIONID")
-                .permitAll();
+                .deleteCookies("JSESSIONID");
 
         http.addFilterBefore(corsFilter(), UsernamePasswordAuthenticationFilter.class);
     }
