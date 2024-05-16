@@ -39,9 +39,7 @@ public class UserController {
         System.out.println("로그인한 유저 이메일:" + email);
         System.out.println("유저 권한:" + authentication.getAuthorities());
 
-        Map<String, String> userInfo = new HashMap<>();
-        userInfo.put("email", email);
-        userInfo.put("authorities", authorities);
+        Map<String, String> userInfo = createUserInfo(email, authorities);
 
         return ResponseEntity.ok(userInfo);
     }
@@ -62,12 +60,17 @@ public class UserController {
     public ResponseEntity<User> getUserPage() {
         System.out.println("일반 인증 성공");
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
-
-        // 유저 정보
+        // 시큐리티에서 읽어서, 해당 정보 유저 반환
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userService.getUserInfo(email);
 
         return ResponseEntity.ok(user);
+    }
+
+    private Map<String, String> createUserInfo(String email, String authorities) {
+        Map<String, String> userInfo = new HashMap<>();
+        userInfo.put("email", email);
+        userInfo.put("authorities", authorities);
+        return userInfo;
     }
 }
