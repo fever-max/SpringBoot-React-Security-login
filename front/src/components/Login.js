@@ -28,7 +28,7 @@ function Login() {
         data: formData,
         withCredentials: true,
       });
-      if (response) {
+      if (response.status === 200) {
         alert('로그인 성공! ');
         console.log('유저 이메일: ' + response.data.email);
         console.log('권한: ' + response.data.authorities);

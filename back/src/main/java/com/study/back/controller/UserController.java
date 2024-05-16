@@ -23,10 +23,11 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/join")
-    public ResponseEntity<String> join(@RequestBody User user) {
+    public ResponseEntity<Void> join(@RequestBody User user) {
         System.out.println("회원가입 컨트롤러 실행" + user);
         userService.joinUser(user);
-        return ResponseEntity.ok("회원가입 완료");
+        System.out.println("회원가입 완료");
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/loginOk")
@@ -48,6 +49,12 @@ public class UserController {
     @GetMapping("/logoutOk")
     public ResponseEntity<Void> logoutOk() {
         System.out.println("로그아웃 성공");
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/admin")
+    public ResponseEntity<Void> getAdminPage() {
+        System.out.println("어드민 인증 성공");
         return ResponseEntity.ok().build();
     }
 }
