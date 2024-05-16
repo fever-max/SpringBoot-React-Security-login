@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function Join() {
   const [user, setUser] = useState({
-    username: '',
+    userName: '',
     userEmail: '',
     password: '',
   });
@@ -28,7 +28,7 @@ function Join() {
     <div>
       <h3>회원가입</h3>
       <form onSubmit={handleSubmit}>
-        <input type="text" id="username" value={user.username} placeholder="이름" onChange={handleChange} />
+        <input type="text" id="userName" value={user.userName} placeholder="이름" onChange={handleChange} />
         <input type="text" id="password" value={user.password} placeholder="비밀번호" onChange={handleChange} />
         <input type="text" id="userEmail" value={user.userEmail} placeholder="이메일" onChange={handleChange} />
         <button type="submit">회원가입</button>

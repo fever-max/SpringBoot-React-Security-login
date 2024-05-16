@@ -4,6 +4,7 @@ import Login from './Login';
 import Join from './Join';
 import UserInfo from './UserInfo';
 import Admin from './Admin';
+import Home from './Home';
 
 function Main() {
   return (
@@ -13,6 +14,7 @@ function Main() {
         <Route path="/join" element={<Join />} />
         <Route path="/userInfo" element={<UserInfo />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
     </div>
   );

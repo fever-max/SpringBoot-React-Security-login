@@ -32,7 +32,7 @@ function Login() {
         alert('로그인 성공! ');
         console.log('유저 이메일: ' + response.data.email);
         console.log('권한: ' + response.data.authorities);
-        navigate('/userInfo', { state: { userData: response.data } });
+        navigate('/home', { state: { userData: response.data } });
       }
     } catch (error) {
       console.log('로그인 에러: ', error);

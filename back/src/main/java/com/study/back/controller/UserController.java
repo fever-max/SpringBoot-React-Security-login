@@ -57,4 +57,17 @@ public class UserController {
         System.out.println("어드민 인증 성공");
         return ResponseEntity.ok().build();
     }
+
+    @GetMapping("/user")
+    public ResponseEntity<User> getUserPage() {
+        System.out.println("일반 인증 성공");
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String email = authentication.getName();
+
+        // 유저 정보
+        User user = userService.getUserInfo(email);
+
+        return ResponseEntity.ok(user);
+    }
 }

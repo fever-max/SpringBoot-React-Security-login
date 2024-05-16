@@ -24,7 +24,7 @@ public class User {
     @Id // primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int no;
-    private String username;
+    private String userName;
     private String password;
 
     @Column(unique = true)

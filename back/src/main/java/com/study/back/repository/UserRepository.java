@@ -9,7 +9,7 @@ import com.study.back.model.User;
 public interface UserRepository extends JpaRepository<User, Integer> {
 
     // SELECT * FROM user WHERE username = ?
-    User findByUsername(String username);
+    User findByUserName(String userName);
 
     User findByUserEmail(String userEmail);
 
